@@ -1,7 +1,7 @@
 var mongosee = require("mongoose")
 async function connect() {
     try {
-        await mongosee.connect('mongodb://localhost:27017/mydb', {
+        await mongosee.connect('mongodb://localhost:27017/Test', {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

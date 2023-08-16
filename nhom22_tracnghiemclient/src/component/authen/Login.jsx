@@ -1,7 +1,11 @@
 import { useContext, useState } from "react"
 import { AuthenContext } from "../context/AuthenContext"
 import duong from "../../images/login-page-4468581-3783954.webp"
-const Login = () => {
+import {Link} from "react-router-dom"
+import Footer from "../layout/Footer"
+import Menu from "../menu/Menu"
+
+const Box = () => {
     const list = {
         username: "",
         password: ""
@@ -16,6 +20,7 @@ const Login = () => {
     }
     const SubmitHandler = (e) => {
         e.preventDefault()
+        
     }
     const { username, password } = forms
     return (
@@ -40,6 +45,11 @@ const Login = () => {
                                     </label>
                                 </div>
                                 <button  style={{width:"100%"}}  type="button" className="btn btn-primary">Đăng Nhập</button>
+                                <div>
+                                    <p>Bạn chưa có tài khoản? <Link style={{listStyle:"none"}} to={"/register"} onClick={()=>{
+                                        
+                                    }} about="dangky">Đăng Ký</Link></p>
+                                </div>
                             </form>
                         </div>
                         <div className="login-right col-sm-6" style={{backgroundColor:"#D6E4E5"}}>
@@ -48,6 +58,14 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+        </div>
+    )
+}
+const Login=()=>{
+    return(
+        <div className="">
+            <Menu/>
+            <Box/>
         </div>
     )
 }
