@@ -12,7 +12,10 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import anh from "../../images/trac-nghiem-online.png"
+import Button from '@mui/material/Button';
+import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 const Menus = () => {
     return (
         <div className="">
@@ -20,13 +23,27 @@ const Menus = () => {
         </div>
     )
 }
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+}
 const Boxs = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const opens = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleCloses = () => {
         setAnchorEl(null);
     };
     return (
@@ -239,15 +256,33 @@ const Boxs = () => {
                     </ul>
                 </div>
                 <div>
+                    <Button onClick={handleOpen} startIcon={<SearchIcon/>}>Tìm Kiếm</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                Text in a modal
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                            </Typography>
+                        </Box>
+                    </Modal>
+                </div>
+                <div>
                     <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
                         <Tooltip title="Account settings">
                             <IconButton
                                 onClick={handleClick}
                                 size="small"
                                 sx={{ ml: 2 }}
-                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-controls={opens ? 'account-menu' : undefined}
                                 aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
+                                aria-expanded={opens ? 'true' : undefined}
                             >
                                 <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
                             </IconButton>
@@ -256,9 +291,9 @@ const Boxs = () => {
                     <Menu
                         anchorEl={anchorEl}
                         id="account-menu"
-                        open={open}
-                        onClose={handleClose}
-                        onClick={handleClose}
+                        open={opens}
+                        onClose={handleCloses}
+                        onClick={handleCloses}
                         PaperProps={{
                             elevation: 0,
                             sx: {
@@ -288,26 +323,26 @@ const Boxs = () => {
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloses}>
                             <Avatar /> Profile
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloses}>
                             <Avatar /> My account
                         </MenuItem>
                         <Divider />
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloses}>
                             <ListItemIcon>
                                 <PersonAdd fontSize="small" />
                             </ListItemIcon>
                             Add another account
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloses}>
                             <ListItemIcon>
                                 <Settings fontSize="small" />
                             </ListItemIcon>
                             Settings
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem onClick={handleCloses}>
                             <ListItemIcon>
                                 <Logout fontSize="small" />
                             </ListItemIcon>
@@ -315,9 +350,9 @@ const Boxs = () => {
                         </MenuItem>
                     </Menu>
                 </div>
-            </nav>
+            </nav >
 
-        </div>
+        </div >
     )
 }
 export default Menus
