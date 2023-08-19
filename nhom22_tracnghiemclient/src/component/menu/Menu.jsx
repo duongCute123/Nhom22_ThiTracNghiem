@@ -13,6 +13,9 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import anh from "../../images/trac-nghiem-online.png"
 import Button from '@mui/material/Button';
+import axios from 'axios';
+import { API_URL } from '../../configapi';
+import { useState, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,11 +29,10 @@ const Menus = () => {
 }
 const style = {
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
+    top: '20%',
+    left: "10%",
+    width: "80%",
+    color: 'white',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
@@ -44,10 +46,36 @@ const Boxs = () => {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+    const [data, setData] = useState([])
+    useEffect(() => {
+        axios.get(API_URL)
+            .then(res => {
+                setData(res.data)
+                console.log(data);
+            })
+            .catch(err => {
+                console.log("Lỗi lấy dữ liệu nhé");
+            })
+    }, [])
     const handleCloses = () => {
         setAnchorEl(null);
     };
-    const tendangnhap=React.useContext(AuthenContext)
+    const TimKiem = () => {
+        return (
+            <div>
+                {
+                    data.map((list) => {
+                        return (
+                            <div className=''>
+                                <Link to={"/"}>{list.cauhoi}</Link>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        )
+    }
+    const tendangnhap = React.useContext(AuthenContext)
     return (
         <div className="">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
@@ -258,7 +286,7 @@ const Boxs = () => {
                     </ul>
                 </div>
                 <div>
-                    <Button onClick={handleOpen} startIcon={<SearchIcon/>}>Tìm Kiếm</Button>
+                    <Button onClick={handleOpen} startIcon={<SearchIcon />}>Tìm Kiếm</Button>
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -267,10 +295,15 @@ const Boxs = () => {
                     >
                         <Box sx={style}>
                             <Typography id="modal-modal-title" variant="h6" component="h2">
-                                Text in a modal
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Vui lòng nhập môn học muốn tìm kiếm" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" onClick={TimKiem} type="submit">Go</button>
+                                    </div>
+                                </div>
                             </Typography>
                             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                <TimKiem/>
                             </Typography>
                         </Box>
                     </Modal>
