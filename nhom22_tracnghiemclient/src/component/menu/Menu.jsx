@@ -16,6 +16,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
+import { AuthenContext } from '../context/AuthenContext';
 const Menus = () => {
     return (
         <div className="">
@@ -46,6 +47,7 @@ const Boxs = () => {
     const handleCloses = () => {
         setAnchorEl(null);
     };
+    const tendangnhap=React.useContext(AuthenContext)
     return (
         <div className="">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
@@ -284,7 +286,7 @@ const Boxs = () => {
                                 aria-haspopup="true"
                                 aria-expanded={opens ? 'true' : undefined}
                             >
-                                <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                                <Avatar sx={{ width: 32, height: 32 }}>{tendangnhap.username}[0]</Avatar>
                             </IconButton>
                         </Tooltip>
                     </Box>

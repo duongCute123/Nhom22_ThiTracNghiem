@@ -4,7 +4,6 @@ import Menus from "../menu/Menu";
 const Contact = () => {
     return (
         <div className="" style={{ textAlign: "center" }}>
-            <Menus />
             <div className="container-fluid">
                 <h1 style={{ marginTop: "60px" }}>Contact Us</h1>
                 <div className="row">
