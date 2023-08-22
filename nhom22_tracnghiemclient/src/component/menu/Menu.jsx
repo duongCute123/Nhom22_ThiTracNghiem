@@ -280,7 +280,7 @@ const Boxs = () => {
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><Link to={"/"} about='' class="nav-link font-weight-bold text-uppercase">About</Link></li>
+                        <li class="nav-item"><Link to={"/thi"} about='thi' class="nav-link font-weight-bold text-uppercase">Thi</Link></li>
                         <li class="nav-item"><Link to={"/"} about='' class="nav-link font-weight-bold text-uppercase">Services</Link></li>
                         <li class="nav-item"><Link to={"/contact"} about='' class="nav-link font-weight-bold text-uppercase">Contact</Link></li>
                     </ul>

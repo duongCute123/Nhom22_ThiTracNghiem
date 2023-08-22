@@ -12,7 +12,6 @@ import dt1 from "../../images/smart1.png"
 import dt2 from "../../images/smart2.png"
 import dt3 from "../../images/smart3.png"
 import dinhuong1 from "../../images/dinhhuong2.jpg"
-import Slider from "react-slick";
 import "./Homepage.css"
 import Footer from "./Footer"
 const HomePage = () => {

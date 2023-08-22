@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  nhom22tracnghiemclient:
+    image: nhom22tracnghiemclient
+    build:
+      context: nhom22_tracnghiemclient
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000

@@ -6,6 +6,7 @@ import Contact from "./component/layout/Contact"
 import HomePage from "./component/layout/Homepage"
 import { Menu } from "@mui/material"
 import Menus from "./component/menu/Menu"
+import ListDeThiTHPTQG from "./component/layout/Listdethithptqg"
 const App = () => {
   return (
     <div className="" style={{ width: "100%" }}>
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/thi" element={<ListDeThiTHPTQG/>}/>
         </Routes>
       </BrowserRouter>
     </div>
