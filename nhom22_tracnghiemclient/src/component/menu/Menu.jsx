@@ -281,7 +281,7 @@ const Boxs = () => {
                             </div>
                         </li>
                         <li class="nav-item"><Link to={"/thi"} about='thi' class="nav-link font-weight-bold text-uppercase">Thi</Link></li>
-                        <li class="nav-item"><Link to={"/"} about='' class="nav-link font-weight-bold text-uppercase">Services</Link></li>
+                        <li class="nav-item"><Link to={"/ketqua"} about='ketqua' class="nav-link font-weight-bold text-uppercase">KetQua</Link></li>
                         <li class="nav-item"><Link to={"/contact"} about='' class="nav-link font-weight-bold text-uppercase">Contact</Link></li>
                     </ul>
                 </div>
