@@ -17,6 +17,7 @@ import axios from 'axios';
 import { API_URL } from '../../configapi';
 import { useState, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
+import "../layout/Profile.css"
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { AuthenContext } from '../context/AuthenContext';
@@ -29,7 +30,7 @@ const Menus = () => {
 }
 const style = {
     position: 'absolute',
-    top: '20%',
+    top: '10%',
     left: "10%",
     width: "80%",
     color: 'white',
@@ -62,7 +63,7 @@ const Boxs = () => {
     };
     const TimKiem = () => {
         return (
-            <div>
+            <div style={{ overflow: "auto" }}>
                 {
                     data.map((list) => {
                         return (
@@ -303,7 +304,17 @@ const Boxs = () => {
                                 </div>
                             </Typography>
                             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                <TimKiem/>
+                                <div className='scroll-tk'>
+                                    {
+                                        data.map((list) => {
+                                            return (
+                                                <div className=''>
+                                                    <Link to={"/"}>{list.cauhoi}</Link>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
                             </Typography>
                         </Box>
                     </Modal>
@@ -359,7 +370,7 @@ const Boxs = () => {
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
                         <MenuItem onClick={handleCloses}>
-                            <Avatar /> Profile
+                            <Avatar /> <Link to={"/profile"} about='profile'>Profile</Link>
                         </MenuItem>
                         <MenuItem onClick={handleCloses}>
                             <Avatar /> My account
