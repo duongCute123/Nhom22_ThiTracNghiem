@@ -10,8 +10,10 @@ import ListDeThiTHPTQG from "./component/layout/Listdethithptqg"
 import HienThiKetQua from "./component/layout/Hienthiketqua"
 import { useContext } from "react"
 import { AuthenContext } from "./component/context/AuthenContext"
+import Profile from "./component/layout/Profile"
 const App = () => {
-  const { exit } = useContext(AuthenContext)
+  const { exit, setExit } = useContext(AuthenContext)
+  setExit(true)
   console.log(exit);
   return (
     <div className="" style={{ width: "100%" }}>
@@ -23,12 +25,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thi" element={<ListDeThiTHPTQG />} />
-          {
-            exit === true ?
-              <Route path="/ketqua" element={<HienThiKetQua />} />
-              :
-              <Route path="/thi" element={<ListDeThiTHPTQG />} />
-          }
+          <Route path="/ketqua" element={<HienThiKetQua />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>
