@@ -14,7 +14,13 @@ import dt3 from "../../images/smart3.png"
 import dinhuong1 from "../../images/dinhhuong2.jpg"
 import "./Homepage.css"
 import Footer from "./Footer"
+import { useContext } from "react"
+import { AuthenContext } from "../context/AuthenContext"
 const HomePage = () => {
+    const {username,password}=useContext(AuthenContext)
+    const tk=localStorage.getItem("user")
+    console.log(tk);
+    localStorage.setItem("user",username,password)
     return (
         <div className="">
             <BoxSlideShow />
@@ -203,6 +209,7 @@ const Box5 = () => {
                         <div className="col-sm-3">
                             <div className="smart">
                                 <img className="anh-smart" src={dt3} alt="" />
+                                
                             </div>
                             <h3>Đáp án chi tiết</h3>
                             <p>Sau khi hoàn thành bài kiểm tra trắc nghiệm hệ thống sẽ thông báo số điểm đạt được kèm lời giải

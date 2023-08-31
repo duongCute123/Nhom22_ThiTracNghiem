@@ -11,6 +11,8 @@ import HienThiKetQua from "./component/layout/Hienthiketqua"
 import { useContext } from "react"
 import { AuthenContext } from "./component/context/AuthenContext"
 import Profile from "./component/layout/Profile"
+import New from "./component/layout/New"
+import Test from "./component/layout/Test"
 const App = () => {
   const { exit, setExit } = useContext(AuthenContext)
   setExit(true)
@@ -27,6 +29,8 @@ const App = () => {
           <Route path="/thi" element={<ListDeThiTHPTQG />} />
           <Route path="/ketqua" element={<HienThiKetQua />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>
