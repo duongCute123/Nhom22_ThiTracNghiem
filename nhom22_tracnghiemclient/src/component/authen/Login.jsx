@@ -15,7 +15,7 @@ const Box = () => {
 
     }
     //Lưu dữ liệu vào trong localStory
-    // localStorage.setItem("user",list.password)
+    localStorage.setItem("user",list.username,list.password)
     return (
         <div className="login">
             <div className="container-fluid form-login" style={{width:"50%",boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>

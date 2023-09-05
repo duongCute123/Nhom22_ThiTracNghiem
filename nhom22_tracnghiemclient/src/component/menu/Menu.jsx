@@ -21,6 +21,7 @@ import "../layout/Profile.css"
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { AuthenContext } from '../context/AuthenContext';
+import "../menu/Menu.css"
 const Menus = () => {
     return (
         <div className="">

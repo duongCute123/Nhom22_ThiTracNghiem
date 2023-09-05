@@ -26,8 +26,7 @@ const AuthenProvider = ({ children }) => {
     const traloi=()=>{
         setTheme(theme==="cautraloi"? "dung":"cautraloi")
     }
-    const tk=localStorage.getItem("user")
-    console.log(tk);
+    
     //Lấy dữ liệu cuat api with axios
     const [data, setData] = useState([])
     //Luu dữ liệu khi đăng nhập vào localStory và token
@@ -47,6 +46,8 @@ const AuthenProvider = ({ children }) => {
         setForms({ ...forms, [name]: value })
     }
     console.log(theme);
+    console.log(localStorage.getItem(JSON.stringify("user")));
+
     const { username, password } = forms
     const value = {
         username,
