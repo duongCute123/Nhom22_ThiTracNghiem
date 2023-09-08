@@ -2,11 +2,11 @@ const jwt = require("./jwt.js");
 
 const USER_MODEL = require("../models/users");
 
-// const {
-//     LEVEL_TYPES,
-//     GENDER_USER,
-//     STATUS_USER
-// }   = require('../config/constants/cf_constants');
+const {
+  // LEVEL_TYPES,
+  GENDER_USER,
+  // STATUS_USER
+} = require("../config/constants/cf_constants");
 
 let renderToView = async function (req, res, view, data) {
   let { token } = req.session;

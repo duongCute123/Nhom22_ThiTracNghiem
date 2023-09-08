@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   fullname: String,
 
-  email: { type: String, required: true, unique: true }, // chỗ này email là bắt buộc mà ko có cho nó nên nó kêu lỗi
+  email: { type: String, required: true, unique: true },
 
   password: String,
 
@@ -34,6 +34,10 @@ const userSchema = new Schema({
   //Hình ảnh
   avatar: String,
 
+  /**
+   * 0.Nam
+   * 1.Nữ
+   */
   //Giới tính
   gender: { type: Number, default: 0 },
 

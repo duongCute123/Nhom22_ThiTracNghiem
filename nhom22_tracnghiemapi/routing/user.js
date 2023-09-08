@@ -37,16 +37,15 @@ route.get("/info-user", async (req, res) => {
   }
 });
 
-
 //TRANG ĐĂNG KÝ
-route.get('/register', async (req, res) => {
-    renderToView(req, res, 'pages/register', { })
-})
+route.get("/register", async (req, res) => {
+  renderToView(req, res, "pages/register", {});
+});
 
-route.post('/register', async (req, res) => {
-    let { email, password, fullname } = req.body;
-    let infoUser = await USER_MODEL.register(email, password, fullname);
-    res.json(infoUser)
+route.post("/register", async (req, res) => {
+  let { email, password, fullname } = req.body;
+  let infoUser = await USER_MODEL.register(email, password, fullname);
+  res.json(infoUser);
 });
 //TRANG ĐĂNG NHẬP
 route.post("/login", async (req, res) => {
@@ -54,10 +53,9 @@ route.post("/login", async (req, res) => {
   let { email, password } = req.body;
   let infoUser = await USER_MODEL.signIn(email, password);
 
-  console.log({ infoUser });
 
   if (!infoUser.error) {
-    req.session.token = infoUser.data.token; //gán token đã tạo cho session
+    req.session = infoUser.data.token; //gán token đã tạo cho session
     req.session.email = req.body.email;
     req.session.user = infoUser.data.infoUser;
     req.user = infoUser.data.infoUser;
