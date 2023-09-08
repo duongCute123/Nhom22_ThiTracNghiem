@@ -13,7 +13,21 @@ import { AuthenContext } from "./component/context/AuthenContext"
 import Profile from "./component/layout/Profile"
 import New from "./component/layout/New"
 import Test from "./component/layout/Test"
+import { unmountComponentAtNode } from "react-dom"
 const App = () => {
+  let container = null;
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
   const { exit, setExit } = useContext(AuthenContext)
   setExit(true)
   console.log(exit);
