@@ -8,8 +8,9 @@ const AuthenContext = createContext();
 const AuthenProvider = ({ children }) => {
 
     const list = {
-        username: "",
-        password: ""
+        email: "",
+        password: "",
+        fullname:""
     }
     //Lấy dữ liệu trong form
     const [forms, setForms] = useState(list)
@@ -48,10 +49,12 @@ const AuthenProvider = ({ children }) => {
     console.log(theme);
     console.log(localStorage.getItem(JSON.stringify("user")));
 
-    const { username, password } = forms
+    const { email, password ,fullname} = forms
     const value = {
-        username,
+        email,
         password,
+        fullname,
+        forms,
         laygtri,
         diem,
         setDiem,
