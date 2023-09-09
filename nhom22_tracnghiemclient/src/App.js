@@ -13,6 +13,7 @@ import { AuthenContext } from "./component/context/AuthenContext"
 import Profile from "./component/layout/Profile"
 import New from "./component/layout/New"
 import Test from "./component/layout/Test"
+import Footer from "./component/layout/Footer"
 const App = () => {
   const { exit, setExit } = useContext(AuthenContext)
   setExit(true)
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/new" element={<New />} />
           <Route path="/test" element={<Test />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   )

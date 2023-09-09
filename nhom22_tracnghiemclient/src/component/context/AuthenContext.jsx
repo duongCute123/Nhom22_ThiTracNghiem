@@ -12,6 +12,8 @@ const AuthenProvider = ({ children }) => {
         password: "",
         fullname:""
     }
+    //Kiểm tra xem là login chưa
+    const [isLogin, setIsLogin] = useState(true)
     //Lấy dữ liệu trong form
     const [forms, setForms] = useState(list)
     //Hiển thị điểm hiện tại
@@ -64,7 +66,9 @@ const AuthenProvider = ({ children }) => {
         exit,
         start,
         setExit,
-        setStart
+        setStart,
+        isLogin,
+        setIsLogin
         
     }
     return (

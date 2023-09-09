@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import { AuthenContext } from "../context/AuthenContext"
 import duong from "../../images/login-page-4468581-3783954.webp"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom"
 import isEmpty from "validator/lib/isEmpty"
 import Footer from "../layout/Footer"
@@ -10,19 +12,21 @@ import axios from "axios"
 import { API_USER } from "../../configapi"
 const Box = () => {
     const list = useContext(AuthenContext)
+    const {setIsLogin}=useContext(AuthenContext)
     const [validMsg, setValidMsg] = useState("")
-    console.log(list);
-    console.log(list.email, list.password);
     const navigation = useNavigate()
     const validations = () => {
         const msg = {
 
         }
         if (isEmpty(list.email)) {
+            toast("Vui lòng nhập email để đăng nhập")
             msg.email = "Vui lòng nhập địa chỉ email"
+            
         }
         if (isEmpty(list.password)) {
-            msg.password = "Vui lonhg nhập mật khẩu"
+            toast("Vui lòng nhập mật khẩu để đăng nhập")
+            msg.password = "Vui lòng nhập mật khẩu"
         }
         setValidMsg(msg)
         if (Object.keys(msg).length > 0) return false
@@ -32,18 +36,20 @@ const Box = () => {
         e.preventDefault()
         const isValid = validations()
         if (!isValid) return
-        axios.post(`http://localhost:8000/user/login`, list.forms)
+        axios.post(`${process.env.REACT_APP_API_LOGIN}`, list.forms)
             .then(res => {
-                console.log(res.data);
+                toast("Đăng nhập thành công..!!")
+                localStorage.setItem("user",JSON.stringify(res.data))
+                setIsLogin(false)
                 navigation("/")
             })
             .catch(err => {
-                console.log(err);
+                toast("Lỗi đăng nhập...?")
             })
 
     }
     return (
-        <div className="login">
+        <div className="login" style={{marginTop:"3%",marginBottom:"2%"}}>
             <div className="container-fluid form-login" style={{ width: "50%", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                 <div className="col-sm-12">
                     <div className="row">
@@ -80,6 +86,7 @@ const Box = () => {
                         </div>
                     </div>
                 </div>
+                <ToastContainer />
             </div>
         </div>
     )

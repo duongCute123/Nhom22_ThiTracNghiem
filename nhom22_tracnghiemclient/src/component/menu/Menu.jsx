@@ -18,10 +18,10 @@ import { API_URL } from '../../configapi';
 import { useState, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import "../layout/Profile.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
-import { AuthenContext } from '../context/AuthenContext';
 import "../menu/Menu.css"
+import { AuthenContext } from '../context/AuthenContext';
 const Menus = () => {
     return (
         <div className="">
@@ -43,6 +43,9 @@ const Boxs = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
+    const {isLogin}=React.useContext(AuthenContext)
+    console.log(isLogin);
+    const navigation=useNavigate()
     const handleClose = () => setOpen(false);
     const opens = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -59,6 +62,9 @@ const Boxs = () => {
                 console.log("Lỗi lấy dữ liệu nhé");
             })
     }, [])
+    const pushLog=()=>{
+        navigation("/login")
+    }
     const handleCloses = () => {
         setAnchorEl(null);
     };
@@ -90,7 +96,7 @@ const Boxs = () => {
                         <li class="nav-item">
                             <Link to={"/"} about='' class="nav-link font-weight-bold text-uppercase">Nhón22_Trắc Nghiệm</Link>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Thi THPTQG</Link>
+                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Tin Tức</Link>
                             <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
                                 <div class="container">
                                     <div class="row bg-white rounded-0 m-0 shadow-sm">
@@ -186,7 +192,7 @@ const Boxs = () => {
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">ĐẠI HỌC</Link>
+                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Kiển Tra Tiếng Anh</Link>
                             <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
                                 <div class="container">
                                     <div class="row bg-white rounded-0 m-0 shadow-sm">
@@ -320,83 +326,87 @@ const Boxs = () => {
                         </Box>
                     </Modal>
                 </div>
-                <div>
-                    <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                        <Tooltip title="Account settings">
-                            <IconButton
-                                onClick={handleClick}
-                                size="small"
-                                sx={{ ml: 2 }}
-                                aria-controls={opens ? 'account-menu' : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={opens ? 'true' : undefined}
+                {
+                    isLogin ? <Button onClick={pushLog}>Login</Button>
+                        :
+                        <div>
+                            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+                                <Tooltip title="Account settings">
+                                    <IconButton
+                                        onClick={handleClick}
+                                        size="small"
+                                        sx={{ ml: 2 }}
+                                        aria-controls={opens ? 'account-menu' : undefined}
+                                        aria-haspopup="true"
+                                        aria-expanded={opens ? 'true' : undefined}
+                                    >
+                                        <Avatar sx={{ width: 32, height: 32 }}>{tendangnhap.email}[0]</Avatar>
+                                    </IconButton>
+                                </Tooltip>
+                            </Box>
+                            <Menu
+                                anchorEl={anchorEl}
+                                id="account-menu"
+                                open={opens}
+                                onClose={handleCloses}
+                                onClick={handleCloses}
+                                PaperProps={{
+                                    elevation: 0,
+                                    sx: {
+                                        overflow: 'visible',
+                                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                        mt: 1.5,
+                                        '& .MuiAvatar-root': {
+                                            width: 32,
+                                            height: 32,
+                                            ml: -0.5,
+                                            mr: 1,
+                                        },
+                                        '&:before': {
+                                            content: '""',
+                                            display: 'block',
+                                            position: 'absolute',
+                                            top: 0,
+                                            right: 14,
+                                            width: 10,
+                                            height: 10,
+                                            bgcolor: 'background.paper',
+                                            transform: 'translateY(-50%) rotate(45deg)',
+                                            zIndex: 0,
+                                        },
+                                    },
+                                }}
+                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                             >
-                                <Avatar sx={{ width: 32, height: 32 }}>{tendangnhap.username}[0]</Avatar>
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
-                    <Menu
-                        anchorEl={anchorEl}
-                        id="account-menu"
-                        open={opens}
-                        onClose={handleCloses}
-                        onClick={handleCloses}
-                        PaperProps={{
-                            elevation: 0,
-                            sx: {
-                                overflow: 'visible',
-                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                                mt: 1.5,
-                                '& .MuiAvatar-root': {
-                                    width: 32,
-                                    height: 32,
-                                    ml: -0.5,
-                                    mr: 1,
-                                },
-                                '&:before': {
-                                    content: '""',
-                                    display: 'block',
-                                    position: 'absolute',
-                                    top: 0,
-                                    right: 14,
-                                    width: 10,
-                                    height: 10,
-                                    bgcolor: 'background.paper',
-                                    transform: 'translateY(-50%) rotate(45deg)',
-                                    zIndex: 0,
-                                },
-                            },
-                        }}
-                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                    >
-                        <MenuItem onClick={handleCloses}>
-                            <Avatar /> <Link to={"/profile"} about='profile'>Profile</Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleCloses}>
-                            <Avatar /> My account
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem onClick={handleCloses}>
-                            <ListItemIcon>
-                                <PersonAdd fontSize="small" />
-                            </ListItemIcon>
-                            Add another account
-                        </MenuItem>
-                        <MenuItem onClick={handleCloses}>
-                            <ListItemIcon>
-                                <Settings fontSize="small" />
-                            </ListItemIcon>
-                            Settings
-                        </MenuItem>
-                        <MenuItem onClick={handleCloses}>
-                            <ListItemIcon>
-                                <Logout fontSize="small" />
-                            </ListItemIcon>
-                            Logout
-                        </MenuItem>
-                    </Menu>
-                </div>
+                                <MenuItem onClick={handleCloses}>
+                                    <Avatar /> <Link to={"/profile"} about='profile'>Profile</Link>
+                                </MenuItem>
+                                <MenuItem onClick={handleCloses}>
+                                    <Avatar /> My account
+                                </MenuItem>
+                                <Divider />
+                                <MenuItem onClick={handleCloses}>
+                                    <ListItemIcon>
+                                        <PersonAdd fontSize="small" />
+                                    </ListItemIcon>
+                                    Add another account
+                                </MenuItem>
+                                <MenuItem onClick={handleCloses}>
+                                    <ListItemIcon>
+                                        <Settings fontSize="small" />
+                                    </ListItemIcon>
+                                    Settings
+                                </MenuItem>
+                                <MenuItem onClick={handleCloses}>
+                                    <ListItemIcon>
+                                        <Logout fontSize="small" />
+                                    </ListItemIcon>
+                                    Logout
+                                </MenuItem>
+                            </Menu>
+                        </div>
+                }
             </nav >
 
         </div >

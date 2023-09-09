@@ -17,10 +17,7 @@ import Footer from "./Footer"
 import { useContext } from "react"
 import { AuthenContext } from "../context/AuthenContext"
 const HomePage = () => {
-    const {username,password}=useContext(AuthenContext)
-    const tk=localStorage.getItem("user")
-    console.log(tk);
-    localStorage.setItem("user",username,password)
+    const {email,password}=useContext(AuthenContext)
     return (
         <div className="">
             <BoxSlideShow />
@@ -29,7 +26,6 @@ const HomePage = () => {
             <Box3 />
             <Box4 />
             <Box5 />
-            <Footer/>
         </div>
     )
 }
@@ -73,7 +69,7 @@ const Box1 = () => {
                 <div className="row" style={{ justifyContent: "space-evenly" }}>
                     <div className="col-sm-3 dethi" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI TIẾNG ANH</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
@@ -83,7 +79,7 @@ const Box1 = () => {
                     </div>
                     <div className="col-sm-3 dethi1" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi2} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI IT</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
@@ -93,7 +89,7 @@ const Box1 = () => {
                     </div>
                     <div className="col-sm-3 dethi2" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi3} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI TƯ DUY</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
