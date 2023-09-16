@@ -103,5 +103,121 @@ route.get("/logout", async (req, res) => {
 //     if (req.isAuthenticated()) { return next(); }
 //     res.redirect('/login')
 // }
+//TẠO MÔN HỌC
+route.get('/create-subject', ROLE_SUPER_ADMIN, async (req, res) => {
+  renderToView(req, res, 'pages/add-subject', { })
+})  
+
+//TẠO BỘ ĐỀ
+route.get('/create-exam', ROLE_ADMIN, async (req, res) => {
+  renderToView(req, res, 'pages/add-exam', { })
+})
+
+//TẠO CÂU HỎI
+route.get('/create-question', ROLE_ADMIN, async (req, res) => {
+  renderToView(req, res, 'pages/add-question', { })
+})
+
+//TRANG DASHBOARD
+route.get('/dashboard', ROLE_ADMIN, async (req, res) => {
+  renderToView(req, res, 'pages/dashboard-admin', {  })
+})
+
+//TRANG 404
+route.get('/page-not-found', async (req, res) => {
+  renderToView(req, res, 'pages/page-404', {  })
+})
+
+//TRANG CONTACT
+route.get('/contact', async (req, res) => {
+  renderToView(req, res, 'pages/contact', {  })
+})
+
+//TRANG LÀM TRẮC NGHIỆM
+route.get('/test-exam', checkActive, async (req, res) => {
+  let { examID } = req.query;
+  let infoExam = await EXAM_MODEL.getInfo({ examID })
+  renderToView(req, res, 'pages/test-exam', {  infoExam: infoExam.data });
+})
+
+//TRANG KẾT QUẢ  ==========>
+route.get('/result-exam', checkActive, async (req, res) => {
+  let { resultID } = req.query;
+  let { examID } = req.query;
+  //console.log(resultID, examID)
+  let infoResult = await RESULT_MODEL.getInfo({ resultID })
+  let infoExam = await EXAM_MODEL.getInfo({ examID })
+  renderToView(req, res, 'pages/result-test-exam', { infoResult: infoResult.data, infoExam: infoExam.data });
+})
+
+route.post('/result-exam', checkActive, async (req, res) => {
+
+  let userID = req.session.user._id;
+
+  let { point, falseArr, trueArr, examID, unfinishQuestion } = req.body;
+
+  //console.log({ point, falseArr, trueArr, userID, examID })
+
+  // Kiểm tra quyền/check về logic (nếu có)
+
+  // Thực hiện hành động sau khi đã check logic
+  let resultInsert = await RESULT_MODEL.insert({ point, falseArr, trueArr, examID, unfinishQuestion, createAt: Date.now(), userID });
+  return res.json(resultInsert);
+
+})
+
+route.get('/list-result-exam', ROLE_ADMIN, async (req, res) => {
+  renderToView(req, res, 'pages/list-result-exam', { });
+})
+//TRANG DANH SÁCH BỘ ĐỀ THEO NGÀNH
+route.get('/list-of-subjects', async (req, res) => {
+  let { subjectID } = req.query;
+  let listExamOfSubject = await EXAM_MODEL.getListOfSubjects({ subjectID });
+  //console.log( listExamOfSubject.data )
+  renderToView(req, res, 'pages/list-exam-of-subject', {  subjectID, listExamOfSubject: listExamOfSubject.data });
+})
+
+//TRANG DANH SÁCH BỘ ĐỀ THEO Mức độ
+route.get('/list-exam-with-level', async (req, res) => {
+  let { subjectID, level } = req.query;
+  let listExamWithLevel = await EXAM_MODEL.getListExamWithLevel({ subjectID, level });
+  //return res.json(listExamWithLevel);
+  renderToView(req, res, 'pages/list-exam-of-level', { listExamWithLevel: listExamWithLevel.data });
+})
+
+//Danh sách đề thi đã lưu
+route.get('/list-exam-by-save', checkActive, async (req, res) => {
+  let userID = req.session.user._id;
+  let listExamBySave = await EXAM_MODEL.getList();
+  renderToView(req, res, 'pages/list-exam-by-save', { listExamBySave: listExamBySave.data, userID});
+})
+
+//lịch sử thi
+route.get('/history-test', checkActive, async (req, res) => {
+  let userID = req.session.user._id;
+  //listResult
+  renderToView(req, res, 'pages/history-test', { userID });
+})
+
+route.get('/list-exam', async (req, res) => {
+  //console.log( listExamOfSubject.data )
+  renderToView(req, res, 'pages/list-exam', { });
+})
+
+route.get('/info-exam', async (req, res) => {
+  //console.log( listExamOfSubject.data )
+  let { examID } = req.query;
+  let infoExamHaveQuestion = await EXAM_MODEL.getInfo({ examID })
+  //console.log(infoExamHaveQuestion)
+  renderToView(req, res, 'pages/info-exam', { infoExamHaveQuestion: infoExamHaveQuestion.data });
+})
+
+//Tìm kiếm theo key và bộ đề
+route.post('/list-result-of-search', async (req, res) => {
+  let { key, examID } = req.body;
+  let listResultOfSearch = await RESULT_MODEL.getListStudentInResultByKey({ key, examID });
+  //console.log({ listResultOfSearch });
+  res.json(listResultOfSearch);
+})
 
 module.exports = route;
