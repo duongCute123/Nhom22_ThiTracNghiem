@@ -43,9 +43,9 @@ const Boxs = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
-    const {isLogin}=React.useContext(AuthenContext)
+    const { isLogin } = React.useContext(AuthenContext)
     console.log(isLogin);
-    const navigation=useNavigate()
+    const navigation = useNavigate()
     const handleClose = () => setOpen(false);
     const opens = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -62,7 +62,7 @@ const Boxs = () => {
                 console.log("Lỗi lấy dữ liệu nhé");
             })
     }, [])
-    const pushLog=()=>{
+    const pushLog = () => {
         navigation("/login")
     }
     const handleCloses = () => {
@@ -72,9 +72,10 @@ const Boxs = () => {
         return (
             <div style={{ overflow: "auto" }}>
                 {
-                    data.map((list) => {
+                    data.length > 0 &&
+                    data.map((list, index) => {
                         return (
-                            <div className=''>
+                            <div className='' key={list.id}>
                                 <Link to={"/"}>{list.cauhoi}</Link>
                             </div>
                         )
@@ -86,211 +87,211 @@ const Boxs = () => {
     const tendangnhap = React.useContext(AuthenContext)
     return (
         <div className="">
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
-                <Link to={"/"} about='' class="navbar-brand font-weight-bold d-block d-lg-none">Thi THPTQG</Link>
-                <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
-                    <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+                <Link to={"/"} about='' className="navbar-brand font-weight-bold d-block d-lg-none">Thi THPTQG</Link>
+                <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" className="navbar-toggler">
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div id="navbarContent" class="collapse navbar-collapse">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <Link to={"/"} about='' class="nav-link font-weight-bold text-uppercase">Nhón22_Trắc Nghiệm</Link>
+                <div id="navbarContent" className="collapse navbar-collapse">
+                    <ul className="navbar-nav mx-auto">
+                        <li className="nav-item">
+                            <Link to={"/"} about='' className="nav-link font-weight-bold text-uppercase">Nhón22_Trắc Nghiệm</Link>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Tin Tức</Link>
-                            <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container">
-                                    <div class="row bg-white rounded-0 m-0 shadow-sm">
-                                        <div class="col-lg-7 col-xl-8">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
+                        <li className="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle font-weight-bold text-uppercase">Tin Tức</Link>
+                            <div aria-labelledby="megamneu" className="dropdown-menu border-0 p-0 m-0">
+                                <div className="container">
+                                    <div className="row bg-white rounded-0 m-0 shadow-sm">
+                                        <div className="col-lg-7 col-xl-8">
+                                            <div className="p-4">
+                                                <div className="row">
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
-                                            <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
-                                            <ul class="list-unstyled">
-                                                <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
+                                        <div className="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
+                                            <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
+                                            <ul className="list-unstyled">
+                                                <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">ĐỀ THI KIỂM TRA</Link>
-                            <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container">
-                                    <div class="row bg-white rounded-0 m-0 shadow-sm">
-                                        <div class="col-lg-7 col-xl-8">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
+                        <li className="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle font-weight-bold text-uppercase">ĐỀ THI KIỂM TRA</Link>
+                            <div aria-labelledby="megamneu" className="dropdown-menu border-0 p-0 m-0">
+                                <div className="container">
+                                    <div className="row bg-white rounded-0 m-0 shadow-sm">
+                                        <div className="col-lg-7 col-xl-8">
+                                            <div className="p-4">
+                                                <div className="row">
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
-                                            <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
-                                            <ul class="list-unstyled">
-                                                <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
+                                        <div className="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
+                                            <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
+                                            <ul className="list-unstyled">
+                                                <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">Kiển Tra Tiếng Anh</Link>
-                            <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container">
-                                    <div class="row bg-white rounded-0 m-0 shadow-sm">
-                                        <div class="col-lg-7 col-xl-8">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
+                        <li className="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle font-weight-bold text-uppercase">Kiển Tra Tiếng Anh</Link>
+                            <div aria-labelledby="megamneu" className="dropdown-menu border-0 p-0 m-0">
+                                <div className="container">
+                                    <div className="row bg-white rounded-0 m-0 shadow-sm">
+                                        <div className="col-lg-7 col-xl-8">
+                                            <div className="p-4">
+                                                <div className="row">
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
-                                            <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
-                                            <ul class="list-unstyled">
-                                                <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
+                                        <div className="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
+                                            <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
+                                            <ul className="list-unstyled">
+                                                <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle font-weight-bold text-uppercase">IT TEST</Link>
-                            <div aria-labelledby="megamneu" class="dropdown-menu border-0 p-0 m-0">
-                                <div class="container">
-                                    <div class="row bg-white rounded-0 m-0 shadow-sm">
-                                        <div class="col-lg-7 col-xl-8">
-                                            <div class="p-4">
-                                                <div class="row">
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
+                        <li className="nav-item dropdown megamenu"><Link id="megamneu" to={"/"} about='' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link dropdown-toggle font-weight-bold text-uppercase">IT TEST</Link>
+                            <div aria-labelledby="megamneu" className="dropdown-menu border-0 p-0 m-0">
+                                <div className="container">
+                                    <div className="row bg-white rounded-0 m-0 shadow-sm">
+                                        <div className="col-lg-7 col-xl-8">
+                                            <div className="p-4">
+                                                <div className="row">
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa học tự nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0">Thi THPTQG Toán</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Lý</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Hoá</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Văn</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sử</Link></li>
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Công Dân</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Tự Nhiên</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Sinh</Link></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-lg-6 mb-4">
-                                                        <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
-                                                        <ul class="list-unstyled">
-                                                            <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
+                                                    <div className="col-lg-6 mb-4">
+                                                        <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Khoa Học Xã Hội</h6>
+                                                        <ul className="list-unstyled">
+                                                            <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Địa Lý</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
-                                            <h6 class="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
-                                            <ul class="list-unstyled">
-                                                <li class="nav-item"><Link to={"/"} about='' class="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
+                                        <div className="col-lg-5 col-xl-4 px-0 d-none d-lg-block MegaMenuDiv">
+                                            <h6 className="font-weight-bold text-uppercase">Môn Tự Chọn Ngoại Ngữ</h6>
+                                            <ul className="list-unstyled">
+                                                <li className="nav-item"><Link to={"/"} about='' className="nav-link text-small pb-0 ">Thi THPTQG Tiếng Anh</Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><Link to={"/thi"} about='thi' class="nav-link font-weight-bold text-uppercase">Thi</Link></li>
-                        <li class="nav-item"><Link to={"/ketqua"} about='ketqua' class="nav-link font-weight-bold text-uppercase">KetQua</Link></li>
-                        <li class="nav-item"><Link to={"/contact"} about='' class="nav-link font-weight-bold text-uppercase">Contact</Link></li>
+                        <li className="nav-item"><Link to={"/thi"} about='thi' className="nav-link font-weight-bold text-uppercase">Thi</Link></li>
+                        <li className="nav-item"><Link to={"/ketqua"} about='ketqua' className="nav-link font-weight-bold text-uppercase">KetQua</Link></li>
+                        <li className="nav-item"><Link to={"/contact"} about='' className="nav-link font-weight-bold text-uppercase">Contact</Link></li>
                     </ul>
                 </div>
                 <div>
@@ -303,10 +304,10 @@ const Boxs = () => {
                     >
                         <Box sx={style}>
                             <Typography id="modal-modal-title" variant="h6" component="h2">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Vui lòng nhập môn học muốn tìm kiếm" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-success" onClick={TimKiem} type="submit">Go</button>
+                                <div className="input-group mb-3">
+                                    <input type="text" className="form-control" placeholder="Vui lòng nhập môn học muốn tìm kiếm" />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-success" onClick={TimKiem} type="submit">Go</button>
                                     </div>
                                 </div>
                             </Typography>
@@ -315,7 +316,7 @@ const Boxs = () => {
                                     {
                                         data.map((list) => {
                                             return (
-                                                <div className=''>
+                                                <div className='' key={list.id}>
                                                     <Link to={"/"}>{list.cauhoi}</Link>
                                                 </div>
                                             )

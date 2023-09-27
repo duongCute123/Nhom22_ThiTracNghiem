@@ -70,7 +70,7 @@ const Register = () => {
                                    
                                     <p>{validMsg.fullname}</p>
                                 </div>
-                                <div class="form-group form-check">
+                                <div className="form-group form-check">
                                     <label className="form-check-label">
                                         <input className="form-check-input" type="checkbox" /> Remember me
                                     </label>

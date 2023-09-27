@@ -53,6 +53,7 @@ const ListDeThiTHPTQG = (props) => {
 }
 const Box = ({ current, next }) => {
     const { data, diem, setDiem } = useContext(AuthenContext)
+    console.log(data);
     const {exit,start,setExit,setStart}=useContext(AuthenContext)
     console.log(exit,start);
     const tests = useContext(AuthenContext)
@@ -108,29 +109,33 @@ const Box = ({ current, next }) => {
                 </div>
             </div> */}
             <div className="">
-                <div className="">
+                {
+                    data.length>0 && (
+                        <div className="">
                     <div className="">{current+1}{data[current].cauhoi}</div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio"  onClick={()=>setAns("A")} onChange={HandlerGtri} value={data[current].kq}class="form-check-input" name="optradio" />{data[current].c1}
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="radio"  onClick={()=>setAns("A")} onChange={HandlerGtri} value={data[current].kq}className="form-check-input" name="optradio" />{data[current].c1}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio" onClick={()=>setAns("B")} onChange={HandlerGtri} value={optradio}  class="form-check-input" name="optradio" />{data[current].c2}
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="radio" onClick={()=>setAns("B")} onChange={HandlerGtri} value={optradio}  className="form-check-input" name="optradio" />{data[current].c2}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio"  onClick={()=>setAns("C")} onChange={HandlerGtri} value={optradio}  class="form-check-input" name="optradio" />{data[current].c3}
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="radio"  onClick={()=>setAns("C")} onChange={HandlerGtri} value={optradio}  className="form-check-input" name="optradio" />{data[current].c3}
                         </label>
                     </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="radio"  onClick={()=>setAns("D")} onChange={HandlerGtri} value={optradio} class="form-check-input" name="optradio" />{data[current].c4}
+                    <div className="form-check">
+                        <label className="form-check-label">
+                            <input type="radio"  onClick={()=>setAns("D")} onChange={HandlerGtri} value={optradio} className="form-check-input" name="optradio" />{data[current].c4}
                         </label>
                     </div>
                 </div>
+                    )
+                }
             </div>
             <div className="col-sm-12 btn">
                 <div className="row">

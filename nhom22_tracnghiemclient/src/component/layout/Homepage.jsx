@@ -32,26 +32,26 @@ const HomePage = () => {
 const BoxSlideShow = () => {
     return (
         <div className="">
-            <div id="carouselId" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <div id="carouselId" className="carousel slide" data-ride="carousel">
+                <ol className="carousel-indicators">
+                    <li data-target="#carouselId" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselId" data-slide-to="1"></li>
                 </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
+                <div className="carousel-inner" role="listbox">
+                    <div className="carousel-item active">
                         <img src={slide1} alt="First slide" />
                     </div>
-                    <div class="carousel-item">
+                    <div className="carousel-item">
                         <img src={slide2} alt="Second slide" />
                     </div>
 
                 </div>
-                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <a className="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
 
                 </a>
-                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <a className="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
 
                 </a>
             </div>

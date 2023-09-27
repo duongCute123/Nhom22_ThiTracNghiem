@@ -8,7 +8,7 @@ import { Menu } from "@mui/material"
 import Menus from "./component/menu/Menu"
 import ListDeThiTHPTQG from "./component/layout/Listdethithptqg"
 import HienThiKetQua from "./component/layout/Hienthiketqua"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthenContext } from "./component/context/AuthenContext"
 import Profile from "./component/layout/Profile"
 import New from "./component/layout/New"
@@ -16,8 +16,10 @@ import Test from "./component/layout/Test"
 import Footer from "./component/layout/Footer"
 const App = () => {
   const { exit, setExit } = useContext(AuthenContext)
-  setExit(true)
-  console.log(exit);
+  useEffect(() => {
+    setExit(true)
+    console.log(exit);
+  },[])
   return (
     <div className="" style={{ width: "100%" }}>
       <BrowserRouter>
@@ -33,7 +35,7 @@ const App = () => {
           <Route path="/new" element={<New />} />
           <Route path="/test" element={<Test />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   )

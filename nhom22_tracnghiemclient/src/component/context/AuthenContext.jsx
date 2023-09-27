@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 const AuthenContext = createContext();
 const AuthenProvider = ({ children }) => {
-
+    // Đọc dữ liệu ra từ local nếu có lưu
+    const Menber = localStorage.getItem("user")
+    const infoMenber = JSON.parse(Menber)
     const list = {
         email: "",
         password: "",
-        fullname:""
+        fullname: ""
     }
     //Kiểm tra xem là login chưa
     const [isLogin, setIsLogin] = useState(true)
@@ -19,26 +21,26 @@ const AuthenProvider = ({ children }) => {
     //Hiển thị điểm hiện tại
     const [diem, setDiem] = useState(0)
     //Bấm để bắt đầu làm bài kiểm tra
-    const [start,setStart]=useState(false)
+    const [start, setStart] = useState(false)
     //Bấm để thoát quá trình làm bài kiểm tra
-    const [exit,setExit]=useState(false)
+    const [exit, setExit] = useState(false)
     //Lấy url của api
-    const url=API_URL
+    const url = API_URL
     //Thử set để thay đổi css
-    const [theme,setTheme]=useState("cautraloi")
-    const traloi=()=>{
-        setTheme(theme==="cautraloi"? "dung":"cautraloi")
+    const [theme, setTheme] = useState("cautraloi")
+    const traloi = () => {
+        setTheme(theme === "cautraloi" ? "dung" : "cautraloi")
     }
-    
+
     //Lấy dữ liệu cuat api with axios
     const [data, setData] = useState([])
     //Luu dữ liệu khi đăng nhập vào localStory và token
     //Lấy dữ liệu từ localStory
+    // Call dữ liệu từ db lên
     useEffect(() => {
-        axios.get(API_URL)
+        axios.get(`${process.env.REACT_APP_API_TEST}`)
             .then(res => {
                 setData(res.data)
-                console.log(data);
             })
             .catch(err => {
                 console.log(err);
@@ -48,10 +50,8 @@ const AuthenProvider = ({ children }) => {
         const { name, value } = e.target
         setForms({ ...forms, [name]: value })
     }
-    console.log(theme);
-    console.log(localStorage.getItem(JSON.stringify("user")));
-
-    const { email, password ,fullname} = forms
+    console.log(infoMenber.data.infoUser.fullname);
+    const { email, password, fullname } = forms
     const value = {
         email,
         password,
@@ -69,7 +69,7 @@ const AuthenProvider = ({ children }) => {
         setStart,
         isLogin,
         setIsLogin
-        
+
     }
     return (
         <AuthenContext.Provider value={value}>
