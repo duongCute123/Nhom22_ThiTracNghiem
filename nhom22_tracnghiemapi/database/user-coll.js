@@ -2,28 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  fullname: String,
+  fullName: String,
 
-  email: { type: String, required: true, unique: true },
+  username: String,
 
   password: String,
 
-  /**
-   * 1. Admin
-   * 0. User
-   * 100. Super Admin
-   */
-  role: { type: Number, default: 0 },
+  role: {
+    type: String,
+    enum: ["Interviewee", "Interviewer", "HRM", "SuperAdmin"],
+    default: "Interviewee",
+  },
 
   //Số điện thoại
   phone: String,
-
-  facebook: {
-    id: String,
-    token: String,
-    email: String,
-    name: String,
-  },
 
   //Ngày sinh
   birthDay: Date,
@@ -31,15 +23,17 @@ const userSchema = new Schema({
   //Địa chỉ
   address: String,
 
-  //Hình ảnh
-  avatar: String,
-
   /**
    * 0.Nam
    * 1.Nữ
    */
   //Giới tính
   gender: { type: Number, default: 0 },
+
+  // Trạng thái 0: chưa thi/Không thi, 1: đã thi
+
+  status: { type: Number, default: 0 },
+
 
   //Người tạo
   author: {
@@ -58,6 +52,9 @@ const userSchema = new Schema({
 
   //Ngày cập nhật
   updateAt: { type: Date, default: Date.now() },
+
+  // Ngày xóa
+  deleteAt: { type: Date, default: Date.now() },
 });
 
 const USER_MODEL = mongoose.model("user", userSchema);
