@@ -130,7 +130,7 @@ module.exports = class User {
         let listUser = await USER.find();
 
         if (!listUser)
-          return resolve({ error: true, message: "cannot_get_list_data" });
+          return resolve({ error: true, message: "Không tìm thấy danh sách ứng viên" });
 
         return resolve({ error: false, data: listUser });
       } catch (error) {
@@ -145,7 +145,7 @@ module.exports = class User {
         let infoUser = await USER.findById(userID);
 
         if (!infoUser)
-          return resolve({ error: true, message: "cannot_get_list_data" });
+          return resolve({ error: true, message: "Không tìm thấy thông tin ứng viên" });
 
         return resolve({ error: false, data: infoUser });
       } catch (error) {
@@ -198,4 +198,6 @@ module.exports = class User {
       }
     });
   }
+
+  
 };
