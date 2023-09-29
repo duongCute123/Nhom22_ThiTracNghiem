@@ -1,12 +1,35 @@
 version: '3.4'
 
 services:
-  nhom22tracnghiemclient:
-    image: nhom22tracnghiemclient
+  backend:
     build:
-      context: nhom22_tracnghiemclient
-      dockerfile: ./Dockerfile
-    environment:
-      NODE_ENV: production
+      context: ./nhom22_tracnghiemapi
+      dockerfile: Dockerfile
     ports:
-      - 4000:4000
+      - "8000:8080"
+    depends_on:
+      - database
+  client:
+    build:
+      context: ./nhom22_tracnghiemclient
+      dockerfile: Dockerfile.uiClient
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+  dashbord:
+    build:
+      context: ./nhom22_tracnghiemdashboard
+      dockerfile: Dockerfile.uiDashboard
+    ports:
+      - "3006:3000"
+    depends_on:
+      - database
+  database:
+    volumes:
+      - thitracnghiem:/data/db
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+volumes:
+  thitracnghiem:

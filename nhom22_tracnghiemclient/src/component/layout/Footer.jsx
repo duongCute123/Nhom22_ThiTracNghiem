@@ -1,5 +1,6 @@
 import anh from "../../images/trac-nghiem-online.png"
 import { Link } from "react-router-dom"
+import "./Footer.css"
 const Footer = () => {
     return (
         <div className="footer">

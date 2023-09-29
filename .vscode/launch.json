@@ -5,11 +5,7 @@
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run: debug",
-            "platform": "node",
-            "node": {
-                "package": "${workspaceFolder}/nhom22_tracnghiemclient/package.json",
-                "localRoot": "${workspaceFolder}/nhom22_tracnghiemclient"
-            }
+            "platform": "node"
         }
     ]
 }

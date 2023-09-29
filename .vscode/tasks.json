@@ -6,12 +6,9 @@
 			"label": "docker-build",
 			"platform": "node",
 			"dockerBuild": {
-				"dockerfile": "${workspaceFolder}/nhom22_tracnghiemclient/Dockerfile",
-				"context": "${workspaceFolder}/nhom22_tracnghiemclient",
+				"dockerfile": "${workspaceFolder}/Dockerfile",
+				"context": "${workspaceFolder}",
 				"pull": true
-			},
-			"node": {
-				"package": "${workspaceFolder}/nhom22_tracnghiemclient/package.json"
 			}
 		},
 		{
@@ -20,10 +17,7 @@
 			"dependsOn": [
 				"docker-build"
 			],
-			"platform": "node",
-			"node": {
-				"package": "${workspaceFolder}/nhom22_tracnghiemclient/package.json"
-			}
+			"platform": "node"
 		},
 		{
 			"type": "docker-run",
@@ -38,7 +32,6 @@
 				}
 			},
 			"node": {
-				"package": "${workspaceFolder}/nhom22_tracnghiemclient/package.json",
 				"enableDebugging": true
 			}
 		}

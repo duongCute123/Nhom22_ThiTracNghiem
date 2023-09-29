@@ -17,10 +17,7 @@ import Footer from "./Footer"
 import { useContext } from "react"
 import { AuthenContext } from "../context/AuthenContext"
 const HomePage = () => {
-    const {username,password}=useContext(AuthenContext)
-    const tk=localStorage.getItem("user")
-    console.log(tk);
-    localStorage.setItem("user",username,password)
+    const {email,password}=useContext(AuthenContext)
     return (
         <div className="">
             <BoxSlideShow />
@@ -29,33 +26,32 @@ const HomePage = () => {
             <Box3 />
             <Box4 />
             <Box5 />
-            <Footer/>
         </div>
     )
 }
 const BoxSlideShow = () => {
     return (
         <div className="">
-            <div id="carouselId" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <div id="carouselId" className="carousel slide" data-ride="carousel">
+                <ol className="carousel-indicators">
+                    <li data-target="#carouselId" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselId" data-slide-to="1"></li>
                 </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
+                <div className="carousel-inner" role="listbox">
+                    <div className="carousel-item active">
                         <img src={slide1} alt="First slide" />
                     </div>
-                    <div class="carousel-item">
+                    <div className="carousel-item">
                         <img src={slide2} alt="Second slide" />
                     </div>
 
                 </div>
-                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <a className="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
 
                 </a>
-                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <a className="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
 
                 </a>
             </div>
@@ -73,7 +69,7 @@ const Box1 = () => {
                 <div className="row" style={{ justifyContent: "space-evenly" }}>
                     <div className="col-sm-3 dethi" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI TIẾNG ANH</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
@@ -83,7 +79,7 @@ const Box1 = () => {
                     </div>
                     <div className="col-sm-3 dethi1" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi2} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI IT</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
@@ -93,7 +89,7 @@ const Box1 = () => {
                     </div>
                     <div className="col-sm-3 dethi2" style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                         <img height={"100px"} src={dethi3} alt="" />
-                        <h1>ĐỀ THI HỌC KỲ</h1>
+                        <h1>ĐỀ THI TƯ DUY</h1>
                         <p>
                             Ngân hàng câu hỏi đầy đủ cấp 1,2,3 được trộn tạo để theo cấu trúc phân loại giúp
                             các em dễ dàng ôn tập online để phục vụ cho việc thi giữa kỳ,
