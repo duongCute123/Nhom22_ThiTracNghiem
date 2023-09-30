@@ -33,7 +33,6 @@ mongoose.connect(uri, { useNewUrlParser: true });
 const USER_ROUTER = require("../nhom22_tracnghiemapi/routing/user.routing");
 app.use(passport.initialize());
 app.use(passport.session());
-//Còn cái này chỉ sài router để gọi api vào sài thôi
 
 app.use("/user", USER_ROUTER);
 async function hashPassword() {}

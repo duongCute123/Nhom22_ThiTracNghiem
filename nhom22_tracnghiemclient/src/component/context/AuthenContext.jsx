@@ -2,7 +2,6 @@ import { createContext } from "react";
 import axios from "axios"
 import { API_URL } from "../../configapi";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 const AuthenContext = createContext();
 const AuthenProvider = ({ children }) => {
@@ -10,9 +9,8 @@ const AuthenProvider = ({ children }) => {
     const Menber = localStorage.getItem("user")
     const infoMenber = JSON.parse(Menber)
     const list = {
-        email: "",
-        password: "",
-        fullname: ""
+        username: "",
+        password: ""
     }
     //Kiểm tra xem là login chưa
     const [isLogin, setIsLogin] = useState(true)
@@ -50,12 +48,10 @@ const AuthenProvider = ({ children }) => {
         const { name, value } = e.target
         setForms({ ...forms, [name]: value })
     }
-    console.log(infoMenber.data.infoUser.fullname);
-    const { email, password, fullname } = forms
+    const { username, password } = forms
     const value = {
-        email,
+        username,
         password,
-        fullname,
         forms,
         laygtri,
         diem,

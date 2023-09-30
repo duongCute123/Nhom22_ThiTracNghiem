@@ -141,7 +141,7 @@ const HomePageClient = () => {
                 </div>
                 <div className="text-center w-full h-full text-blue-50 items-center bg-[url('./images/back-none.png')] bg-no-repeat bg-cover">
                     <div className="">
-                        <h1 className="font-semibold text-6xl mt-14">Hi! duongnv57</h1>
+                        <h1 className="font-semibold text-6xl">Hi! duongnv57</h1>
                         <p>Những gì chúng ta biết trong ngày hôm nay ngày hôm sau sẽ lỗi thời.</p>
                         <p>Nếu ngừng học tập thì chúng ta sẽ ngừng phát triển! Hãy tham gia</p>
                         <p>Workplace Foxskill để liên tục được cập nhật kiến thức mới bạn nhé!</p>
