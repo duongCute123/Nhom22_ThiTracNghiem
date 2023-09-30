@@ -30,15 +30,9 @@ app.use(
 const uri = "mongodb://127.0.0.1/tracnghiemOmatech";
 
 mongoose.connect(uri, { useNewUrlParser: true });
-<<<<<<< HEAD:index.js
-const USER_ROUTER = require("./nhom22_tracnghiemapi/routing/user.routing");
+const USER_ROUTER = require("../nhom22_tracnghiemapi/routing/user.routing");
 app.use(passport.initialize());
 app.use(passport.session());
-=======
-//Làm thì tách router ra trong project nhom22_tracnghiemapi nhé
-const USER_ROUTER = require("./routing/user");
-
->>>>>>> fa774536e84680d95885fe7fe86c35a0f20a5cb8:nhom22_tracnghiemapi/index.js
 //Còn cái này chỉ sài router để gọi api vào sài thôi
 
 app.use("/user", USER_ROUTER);
