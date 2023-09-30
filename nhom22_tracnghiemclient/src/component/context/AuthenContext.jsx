@@ -6,8 +6,6 @@ import { useEffect } from "react";
 const AuthenContext = createContext();
 const AuthenProvider = ({ children }) => {
     // Đọc dữ liệu ra từ local nếu có lưu
-    const Menber = localStorage.getItem("user")
-    const infoMenber = JSON.parse(Menber)
     const list = {
         username: "",
         password: ""
