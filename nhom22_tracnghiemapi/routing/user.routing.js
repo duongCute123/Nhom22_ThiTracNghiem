@@ -11,6 +11,7 @@ route.get("/me", async (req, res) => {
   return res.json(myProfile);
 });
 
+// Tạo tk cho ứng viên
 route.post("/create", async (req, res) => {
   const authorizationHeader = req.headers["authorization"];
   const token = authorizationHeader.substring(7);
@@ -71,6 +72,16 @@ route.get("/list/info", async (req, res) => {
 });
 // Cập nhật thông tin
 route.patch("/:userID", async (req, res) => {
+  const authorizationHeader = req.headers["authorization"];
+  const token = authorizationHeader.substring(7);
+  const user = await verify(token);
+  if (
+    user.data.role !== "SuperAdmin" &&
+    user.data.role !== "Interviewer"
+
+  ) {
+    res.json({ success: false, message: "Không được phép" }); //Check quyền của người đang đăng nhập
+  }
   try {
     const { userID } = req.params;
     const { fullName, gender, birthDay, phone, address } = req.body;
