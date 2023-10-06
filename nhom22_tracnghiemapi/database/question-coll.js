@@ -1,39 +1,35 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const QuestionSchema = new Schema({
+  /**
+   * Tên
+   */
+  name: String,
 
-    author: {
-        type: Schema.Types.ObjectId,
-        ref : "user"
+  /**
+   * Cau tra loi
+   */
+  answer: [
+    {
+      type: String,
     },
-    
-    /**
-     * Tên
-     */
-    name: String,
+  ],
 
-    /**
-     * Cau tra loi
-     */
-    answer: [{
-        type: String,
-    }],
+  /**
+   * Bo de
+   */
+  exam: {
+    type: Schema.Types.ObjectId,
+    ref: "exam",
+  },
 
-    /**
-     * Bo de
-     */
-    exam: {
-        type: Schema.Types.ObjectId,
-        ref: "exam",
-    },
-    
-    image: String,
+  image: String,
 
-    point: String,
+  point: String,
 
-    correct: Number,
+  correct: Number,
 });
 
-const QUESTION_MODEL = mongoose.model('question', QuestionSchema);
-module.exports  = QUESTION_MODEL;
+const QUESTION_MODEL = mongoose.model("question", QuestionSchema);
+module.exports = QUESTION_MODEL;
