@@ -10,9 +10,10 @@ const QuestionSchema = new Schema({
   /**
    * Cau tra loi
    */
-  answer: [
+  answers: [
     {
-      type: String,
+      option: String, // Văn bản lựa chọn (ví dụ: A, B, C, D)
+      isCorrect: Boolean, //  boolean để chỉ ra liệu nó có phải là câu trả lời đúng không
     },
   ],
 
@@ -23,8 +24,6 @@ const QuestionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "exam",
   },
-
-  image: String,
 
   point: String,
 

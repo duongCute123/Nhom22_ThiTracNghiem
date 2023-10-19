@@ -27,7 +27,7 @@ const ResultSchema = new Schema({
         ref : "exam"
     },
 
-    unfinishQuestion: String,
+    unFinishQuestion: String,
 
     createAt: { type: Date, required: true, default: Date.now }
 });

@@ -168,33 +168,33 @@ module.exports = class Exam extends EXAM_COLL {
 
   
 
-  //   static remove({ examID }) {
-  //     return new Promise(async (resolve) => {
-  //       try {
-  //         if (!ObjectID.isValid(examID))
-  //           return resolve({ error: true, message: "params_invalid" });
+    static remove({ examID }) {
+      return new Promise(async (resolve) => {
+        try {
+          if (!ObjectID.isValid(examID))
+            return resolve({ error: true, message: "params_invalid" });
 
-  //         let infoAfterRemove = await EXAM_COLL.findByIdAndDelete(examID);
+          let infoAfterRemove = await EXAM_COLL.findByIdAndDelete(examID);
 
-  //         let infoQuestionRemove = await QUESTION_COLL.deleteMany({
-  //           exam: examID,
-  //         });
+          let infoQuestionRemove = await QUESTION_COLL.deleteMany({
+            exam: examID,
+          });
 
-  //         let infoCommentRemove = await COMMENT_COLL.deleteMany({ exam: examID });
+          let infoCommentRemove = await COMMENT_COLL.deleteMany({ exam: examID });
 
-  //         if (!infoAfterRemove)
-  //           return resolve({ error: true, message: "cannot_remove_data" });
+          if (!infoAfterRemove)
+            return resolve({ error: true, message: "cannot_remove_data" });
 
-  //         return resolve({
-  //           error: false,
-  //           data: infoAfterRemove,
-  //           message: "remove_data_success",
-  //         });
-  //       } catch (error) {
-  //         return resolve({ error: true, message: error.message });
-  //       }
-  //     });
-  //   }
+          return resolve({
+            error: false,
+            data: infoAfterRemove,
+            message: "remove_data_success",
+          });
+        } catch (error) {
+          return resolve({ error: true, message: error.message });
+        }
+      });
+    }
 
   //   //Lưu đề thi
   //   static saveExam({ examID, userID }) {
