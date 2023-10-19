@@ -16,6 +16,11 @@ const QuestionSchema = new Schema({
       isCorrect: Boolean, //  boolean để chỉ ra liệu nó có phải là câu trả lời đúng không
     },
   ],
+    //Mức độ---- 0: Junior || 1: Senior || 2: Leader || 3: Mid-level Manager || 4: Senior Leader
+  level: {
+    type: Number,
+    default: 0,
+  },
 
   /**
    * Bo de

@@ -3,18 +3,19 @@ const QUESTION_MODEL = require("../models/question.model");
 const { verify } = require("../utils/jwt");
 
 route.post("/add-question", async (req, res) => {
-    const authorizationHeader = req.headers["authorization"];
-    const token = authorizationHeader.substring(7);
-    const user = await verify(token);
-    if (user.data.role !== "SuperAdmin" && user.data.role !== "Interviewer") {
-      res.json({ success: false, message: "Không được phép" }); //Check quyền của người đang đăng nhập
-    }
+  const authorizationHeader = req.headers["authorization"];
+  const token = authorizationHeader.substring(7);
+  const user = await verify(token);
+  if (user.data.role !== "SuperAdmin" && user.data.role !== "Interviewer") {
+    res.json({ success: false, message: "Không được phép" }); //Check quyền của người đang đăng nhập
+  }
   try {
-    let { nameQuestion, answers } = req.body;
+    let { nameQuestion, answers, level } = req.body;
     let infoQuestion;
     infoQuestion = await QUESTION_MODEL.insert({
       nameQuestion,
       answers,
+      level,
     });
     return res.json(infoQuestion);
   } catch (error) {
@@ -59,14 +60,13 @@ route.patch("/update-question/:questionID", async (req, res) => {
   try {
     let { questionID } = req.params;
 
-    let { nameQuestion, answer, correct } = req.body;
+    let { nameQuestion, answers, level } = req.body;
 
     let resultUpdate = await QUESTION_MODEL.update({
-      userUpdate,
       questionID,
       nameQuestion,
-      answer,
-      correct,
+      answers,
+      level,
     });
 
     res.json(resultUpdate);
@@ -75,19 +75,17 @@ route.patch("/update-question/:questionID", async (req, res) => {
   }
 });
 
-route.get("/remove-question/:questionID", async (req, res) => {
-    const authorizationHeader = req.headers["authorization"];
-    const token = authorizationHeader.substring(7);
-    const user = await verify(token);
-    if (user.data.role !== "SuperAdmin") {
-      res.json({ success: false, message: "Không được phép" }); //Check quyền của người đang đăng nhập
-    }
+route.delete("/remove-question/:questionID", async (req, res) => {
+  const authorizationHeader = req.headers["authorization"];
+  const token = authorizationHeader.substring(7);
+  const user = await verify(token);
+  if (user.data.role !== "SuperAdmin") {
+    res.json({ success: false, message: "Không được phép" }); //Check quyền của người đang đăng nhập
+  }
   try {
     let { questionID } = req.params;
-    let { examID } = req.query;
 
-    let resultRemove = await QUESTION_MODEL.remove({ questionID, examID });
-
+    let resultRemove = await QUESTION_MODEL.remove({ questionID });
     res.json(resultRemove);
   } catch (error) {
     res.json(error.message);

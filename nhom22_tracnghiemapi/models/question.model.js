@@ -3,12 +3,13 @@ const QUESTION_COLL = require("../database/question-coll");
 const EXAM_COLL = require("../database/exam-coll");
 
 module.exports = class Question extends QUESTION_COLL {
-  static insert({ nameQuestion, answers }) {
+  static insert({ nameQuestion, answers, level }) {
     return new Promise(async (resolve) => {
       try {
         let dataInsert = {
           name: nameQuestion,
           answers,
+          level,
         };
         let infoAfterInsert = new QUESTION_COLL(dataInsert);
         let saveDataInsert = await infoAfterInsert.save();
@@ -54,29 +55,14 @@ module.exports = class Question extends QUESTION_COLL {
     });
   }
 
-  static remove({ questionID, examID }) {
+  static remove({ questionID }) {
     return new Promise(async (resolve) => {
       try {
-        if (!ObjectID.isValid(questionID) || !ObjectID.isValid(examID))
+        if (!ObjectID.isValid(questionID))
           return resolve({ error: true, message: "params_invalid" });
-
         let infoAfterRemove = await QUESTION_COLL.findByIdAndDelete(questionID);
-
-        //console.log({ infoAfterRemove })
-
         if (!infoAfterRemove)
           return resolve({ error: true, message: "cannot_remove_data" });
-
-        let deleteQuestionOfExam = await EXAM_COLL.findByIdAndUpdate(
-          examID,
-          {
-            $pull: { question: infoAfterRemove._id },
-          },
-          { new: true }
-        );
-
-        //console.log({ deleteQuestionOfExam })
-
         return resolve({
           error: false,
           data: infoAfterRemove,
@@ -88,15 +74,7 @@ module.exports = class Question extends QUESTION_COLL {
     });
   }
 
-  static update({
-    questionID,
-    nameQuestion,
-    examID,
-    answer,
-    correct,
-    image,
-    userID,
-  }) {
+  static update({ questionID, nameQuestion, answers, level }) {
     return new Promise(async (resolve) => {
       try {
         if (!ObjectID.isValid(questionID))
@@ -104,11 +82,8 @@ module.exports = class Question extends QUESTION_COLL {
 
         let dataUpdate = {
           nameQuestion,
-          examID,
-          answer,
-          correct,
-          image,
-          userUpdate: userID,
+          answers,
+          level,
         };
 
         let infoAfterUpdate = await QUESTION_COLL.findByIdAndUpdate(
